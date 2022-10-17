@@ -7,11 +7,11 @@ using GeneratorPluginSupport;
 
 namespace FakerLib.Generators
 {
-    class IntGenerator : IGenerator
+    class IntGenerator : Generator, IGenerator
     {
         public dynamic Generate(IFaker faker)
         {
-            return new Random().Next();
+            return rand.Next();
         }
         public Type GetTypeGenerator()
         {

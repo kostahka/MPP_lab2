@@ -7,14 +7,13 @@ using GeneratorPluginSupport;
 
 namespace FakerLib.Generators
 {
-    class DateTimeGenerator : IGenerator
+    class DateTimeGenerator : Generator, IGenerator
     {
         public dynamic Generate(IFaker faker)
         {
-            Random r = new Random();
             DateTime start = new DateTime(1995, 1, 1);
             int range = (DateTime.Today - start).Days;
-            return start.AddDays(r.Next(range));
+            return start.AddDays(rand.Next(range));
         }
         public Type GetTypeGenerator()
         {

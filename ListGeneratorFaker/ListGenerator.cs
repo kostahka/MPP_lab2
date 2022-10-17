@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ListGeneratorFaker
 {
-    public class ListGenerator : IGenerator
+    public class ListGenerator : Generator, IGenerator
     {
         public dynamic Generate(IFaker faker)
         {
@@ -25,7 +25,8 @@ namespace ListGeneratorFaker
         public List<T> GenerateList<T>(IFaker faker)
         {
             List<T> tmp = new List<T>();
-            for (int i = 0; i < new Random().Next(10); i++)
+            int amount = rand.Next(10);
+            for (int i = 0; i < amount; i++)
             {
                 tmp.Add(faker.Create<T>());
             }

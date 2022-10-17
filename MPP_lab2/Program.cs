@@ -95,6 +95,7 @@ namespace MPP_lab2
             var exp9 = f2.Create<string>();
             var exp10 = f2.Create<GenericClass>();
             Console.WriteLine("Complete");
+            Console.ReadLine();
         }
     }
 }

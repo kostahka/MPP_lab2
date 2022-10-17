@@ -7,13 +7,12 @@ using GeneratorPluginSupport;
 
 namespace FakerLib.Generators
 {
-    class StringGenerator : IGenerator
+    class StringGenerator : Generator, IGenerator
     {
         public dynamic Generate(IFaker faker)
         {
-            Random r = new Random();
-            byte[] tmp = new byte[r.Next(15) * 2];
-            r.NextBytes(tmp);
+            byte[] tmp = new byte[rand.Next(15) * 2];
+            rand.NextBytes(tmp);
             return Encoding.UTF8.GetString(tmp);
         }
         public Type GetTypeGenerator()

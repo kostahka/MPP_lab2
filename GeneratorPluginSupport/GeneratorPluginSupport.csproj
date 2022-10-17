@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Generator.cs" />
     <Compile Include="IFaker.cs" />
     <Compile Include="IGenerator.cs" />
     <Compile Include="PluginSupport.cs" />
