@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using GeneratorPluginSupport;
 
 namespace FakerLib
 {
@@ -147,6 +148,15 @@ namespace FakerLib
             {
                 IGenerator generator = (IGenerator)Activator.CreateInstance(t);
                 result.Add(generator.GetTypeGenerator(), generator);
+            }
+
+            var plugins = PluginSupport.GetGeneratorsFromPlugins();
+            foreach(var plugin in plugins.Values)
+            {
+                Type type = plugin.GetTypeGenerator();
+                if (result.ContainsKey(type))
+                    result.Remove(type);
+                result.Add(type, plugin);
             }
 
             return result;

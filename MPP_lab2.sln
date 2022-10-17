@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakerLib", "FakerLib\FakerL
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakerTests", "FakerTests\FakerTests.csproj", "{805745CE-F714-4AA5-9799-C58ADDBF5276}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneratorPluginSupport", "GeneratorPluginSupport\GeneratorPluginSupport.csproj", "{EDBD6300-FCE7-4EFD-A7A3-99AE842492D2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{805745CE-F714-4AA5-9799-C58ADDBF5276}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{805745CE-F714-4AA5-9799-C58ADDBF5276}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{805745CE-F714-4AA5-9799-C58ADDBF5276}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDBD6300-FCE7-4EFD-A7A3-99AE842492D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDBD6300-FCE7-4EFD-A7A3-99AE842492D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDBD6300-FCE7-4EFD-A7A3-99AE842492D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDBD6300-FCE7-4EFD-A7A3-99AE842492D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

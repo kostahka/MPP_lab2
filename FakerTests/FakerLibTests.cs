@@ -2,6 +2,7 @@
 using FakerLib.Generators;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using GeneratorPluginSupport;
 
 namespace FakerTests
 {

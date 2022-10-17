@@ -47,12 +47,17 @@
     <Compile Include="Generators\DateTimeGenerator.cs" />
     <Compile Include="Generators\DoubleGenerator.cs" />
     <Compile Include="Generators\FloatGenerator.cs" />
-    <Compile Include="Generators\IGenerator.cs" />
     <Compile Include="Generators\IntGenerator.cs" />
     <Compile Include="Generators\LongGenerator.cs" />
     <Compile Include="Generators\StringGenerator.cs" />
     <Compile Include="IFaker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GeneratorPluginSupport\GeneratorPluginSupport.csproj">
+      <Project>{edbd6300-fce7-4efd-a7a3-99ae842492d2}</Project>
+      <Name>GeneratorPluginSupport</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

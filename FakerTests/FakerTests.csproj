@@ -60,6 +60,10 @@
       <Project>{28BD74C8-5E23-4EBB-B430-3ABD4C5C3197}</Project>
       <Name>FakerLib</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GeneratorPluginSupport\GeneratorPluginSupport.csproj">
+      <Project>{edbd6300-fce7-4efd-a7a3-99ae842492d2}</Project>
+      <Name>GeneratorPluginSupport</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
