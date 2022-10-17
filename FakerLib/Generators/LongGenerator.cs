@@ -6,12 +6,16 @@ using System.Threading.Tasks;
 
 namespace FakerLib.Generators
 {
-    class LongGenerator : IGenerator<long>
+    class LongGenerator : IGenerator
     {
-        public long Generate()
+        public dynamic Generate()
         {
             Random r = new Random();
             return r.Next() << 32 | r.Next();
+        }
+        public Type GetTypeGenerator()
+        {
+            return typeof(long);
         }
     }
 }

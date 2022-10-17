@@ -6,14 +6,18 @@ using System.Threading.Tasks;
 
 namespace FakerLib.Generators
 {
-    class StringGenerator : IGenerator<string>
+    class StringGenerator : IGenerator
     {
-        public string Generate()
+        public dynamic Generate()
         {
             Random r = new Random();
             byte[] tmp = new byte[r.Next(15) * 2];
             r.NextBytes(tmp);
             return Encoding.UTF8.GetString(tmp);
+        }
+        public Type GetTypeGenerator()
+        {
+            return typeof(string);
         }
     }
 }

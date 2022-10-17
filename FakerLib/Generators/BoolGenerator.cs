@@ -6,11 +6,15 @@ using System.Threading.Tasks;
 
 namespace FakerLib.Generators
 {
-    class BoolGenerator:IGenerator<bool>
+    class BoolGenerator:IGenerator
     {
-        public bool Generate()
+        public dynamic Generate()
         {
             return Convert.ToBoolean(new Random().Next() & 1);
+        }
+        public Type GetTypeGenerator()
+        {
+            return typeof(bool);
         }
     }
 }

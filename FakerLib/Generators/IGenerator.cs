@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace FakerLib.Generators
 {
-    interface IGenerator<T>
+    public interface IGenerator
     {
-        T Generate();
+        dynamic Generate();
+        Type GetTypeGenerator();
     }
 }

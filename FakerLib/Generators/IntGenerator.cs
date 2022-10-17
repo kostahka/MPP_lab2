@@ -6,11 +6,15 @@ using System.Threading.Tasks;
 
 namespace FakerLib.Generators
 {
-    class IntGenerator
+    class IntGenerator : IGenerator
     {
-        public int Generate()
+        public dynamic Generate()
         {
             return new Random().Next();
+        }
+        public Type GetTypeGenerator()
+        {
+            return typeof(int);
         }
     }
 }
