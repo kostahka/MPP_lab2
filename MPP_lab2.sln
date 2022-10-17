@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.32602.291
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MPP_lab2", "MPP_lab2\MPP_lab2.csproj", "{464F2536-1DFE-49CA-A194-57962B53CB9D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakerLib", "FakerLib\FakerLib.csproj", "{28BD74C8-5E23-4EBB-B430-3ABD4C5C3197}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{464F2536-1DFE-49CA-A194-57962B53CB9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{464F2536-1DFE-49CA-A194-57962B53CB9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{464F2536-1DFE-49CA-A194-57962B53CB9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28BD74C8-5E23-4EBB-B430-3ABD4C5C3197}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28BD74C8-5E23-4EBB-B430-3ABD4C5C3197}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28BD74C8-5E23-4EBB-B430-3ABD4C5C3197}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28BD74C8-5E23-4EBB-B430-3ABD4C5C3197}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
