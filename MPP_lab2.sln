@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MPP_lab2", "MPP_lab2\MPP_la
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakerLib", "FakerLib\FakerLib.csproj", "{28BD74C8-5E23-4EBB-B430-3ABD4C5C3197}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakerTests", "FakerTests\FakerTests.csproj", "{805745CE-F714-4AA5-9799-C58ADDBF5276}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{28BD74C8-5E23-4EBB-B430-3ABD4C5C3197}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28BD74C8-5E23-4EBB-B430-3ABD4C5C3197}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28BD74C8-5E23-4EBB-B430-3ABD4C5C3197}.Release|Any CPU.Build.0 = Release|Any CPU
+		{805745CE-F714-4AA5-9799-C58ADDBF5276}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{805745CE-F714-4AA5-9799-C58ADDBF5276}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{805745CE-F714-4AA5-9799-C58ADDBF5276}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{805745CE-F714-4AA5-9799-C58ADDBF5276}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

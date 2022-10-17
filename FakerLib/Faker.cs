@@ -56,7 +56,8 @@ namespace FakerLib
                 catch { }
             }
             
-            GenerateFieldsAndProperties(constructed, ctorParams, ctor);
+            if(constructed != null)
+                GenerateFieldsAndProperties(constructed, ctorParams, ctor);
 
             DTOs.Remove(typeof(T));
 
@@ -129,7 +130,7 @@ namespace FakerLib
             return t.IsPrimitive || (t == typeof(string)) || (t == typeof(decimal)) || (t == typeof(DateTime));
         }
 
-        Faker()
+        public Faker()
         {
             generators = GetAllGenerators();
         }
