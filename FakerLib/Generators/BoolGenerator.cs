@@ -9,7 +9,7 @@ namespace FakerLib.Generators
 {
     class BoolGenerator:IGenerator
     {
-        public dynamic Generate()
+        public dynamic Generate(IFaker faker)
         {
             return Convert.ToBoolean(new Random().Next() & 1);
         }
@@ -17,5 +17,6 @@ namespace FakerLib.Generators
         {
             return typeof(bool);
         }
+        public void SetFakerInterface() { }
     }
 }

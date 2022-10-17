@@ -50,7 +50,6 @@
     <Compile Include="Generators\IntGenerator.cs" />
     <Compile Include="Generators\LongGenerator.cs" />
     <Compile Include="Generators\StringGenerator.cs" />
-    <Compile Include="IFaker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -9,7 +9,7 @@ namespace FakerLib.Generators
 {
     class LongGenerator : IGenerator
     {
-        public dynamic Generate()
+        public dynamic Generate(IFaker faker)
         {
             Random r = new Random();
             return r.Next() << 32 | r.Next();

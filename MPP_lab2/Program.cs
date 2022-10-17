@@ -70,6 +70,17 @@ namespace MPP_lab2
                 field1 = 1;
             }
         }
+
+        class GenericClass
+        {
+            public List<int> numbers;
+            public List<char> characters;
+            public GenericClass(List<int> nums, List<char> chars)
+            {
+                numbers = nums;
+                characters = chars;
+            }
+        }
         static void Main(string[] args)
         {
             Faker f2 = new Faker();
@@ -82,6 +93,7 @@ namespace MPP_lab2
             var exp7 = f2.Create<int>();
             var exp8 = f2.Create<DateTime>();
             var exp9 = f2.Create<string>();
+            var exp10 = f2.Create<GenericClass>();
             Console.WriteLine("Complete");
         }
     }

@@ -9,7 +9,7 @@ namespace FakerLib.Generators
 {
     class DateTimeGenerator : IGenerator
     {
-        public dynamic Generate()
+        public dynamic Generate(IFaker faker)
         {
             Random r = new Random();
             DateTime start = new DateTime(1995, 1, 1);

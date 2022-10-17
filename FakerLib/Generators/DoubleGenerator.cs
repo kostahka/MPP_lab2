@@ -9,7 +9,7 @@ namespace FakerLib.Generators
 {
     class DoubleGenerator : IGenerator
     {
-        public dynamic Generate()
+        public dynamic Generate(IFaker faker)
         {
             return new Random().NextDouble();
         }

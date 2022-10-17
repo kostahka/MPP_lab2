@@ -9,7 +9,7 @@ namespace FakerLib.Generators
 {
     class CharGenerator : IGenerator
     {
-        public dynamic Generate()
+        public dynamic Generate(IFaker faker)
         {
             return (char)new Random().Next(255);
         }

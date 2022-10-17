@@ -8,7 +8,7 @@ namespace GeneratorPluginSupport
 {
     public interface IGenerator
     {
-        dynamic Generate();
+        dynamic Generate(IFaker faker);
         Type GetTypeGenerator();
     }
 }

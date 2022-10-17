@@ -9,7 +9,7 @@ namespace FakerLib.Generators
 {
     class StringGenerator : IGenerator
     {
-        public dynamic Generate()
+        public dynamic Generate(IFaker faker)
         {
             Random r = new Random();
             byte[] tmp = new byte[r.Next(15) * 2];

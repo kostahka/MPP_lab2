@@ -13,31 +13,53 @@ namespace FakerLib
     {
         List<Type> DTOs = new List<Type>();
         Dictionary<Type, IGenerator> generators;
+        Type currentType;
 
+        public Type GetCurrentType()
+        {
+            return currentType;
+        }
         public T Create<T>()
         {
-            if (IsPrimitive(typeof(T)))
+            currentType = typeof(T);
+            if (currentType.IsPrimitive || generators.ContainsKey(currentType))
             {
                 try
                 {
-                    return (T)generators[typeof(T)].Generate();
+                    return (T)generators[currentType].Generate(this);
                 }
                 catch
                 {
                     return default;
                 }
             }
-            else if (DTOs.Contains(typeof(T)))
+            else if (currentType.IsGenericType)
+            {
+                if(generators.ContainsKey(currentType.GetGenericTypeDefinition()))
+                {
+                    try
+                    {
+                        return (T)generators[currentType.GetGenericTypeDefinition()].Generate(this);
+                    }
+                    catch
+                    {
+                        return default;
+                    }
+                }
+                else
+                 return default;
+            }
+            else if (DTOs.Contains(currentType))
             {
                 return default;
             }
 
-            DTOs.Add(typeof(T));
+            DTOs.Add(currentType);
 
-            ConstructorInfo[] constructors = typeof(T).GetConstructors(BindingFlags.Instance | BindingFlags.Public);
+            ConstructorInfo[] constructors = currentType.GetConstructors(BindingFlags.Instance | BindingFlags.Public);
 
             object constructed = default;
-            if (typeof(T).IsValueType && constructors.Length == 0)
+            if (currentType.IsValueType && constructors.Length == 0)
             {
                 constructed = Activator.CreateInstance(typeof(T));
             }
@@ -60,7 +82,7 @@ namespace FakerLib
             if(constructed != null)
                 GenerateFieldsAndProperties(constructed, ctorParams, ctor);
 
-            DTOs.Remove(typeof(T));
+            DTOs.Remove(currentType);
 
             return (T)constructed;
         }
@@ -124,11 +146,6 @@ namespace FakerLib
             }
 
             return ctorParams;
-        }
-
-        private bool IsPrimitive(Type t)
-        {
-            return t.IsPrimitive || (t == typeof(string)) || (t == typeof(decimal)) || (t == typeof(DateTime));
         }
 
         public Faker()
