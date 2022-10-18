@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using GeneratorPluginSupport;
+using System.Linq.Expressions;
 
 namespace FakerLib
 {
@@ -13,53 +14,65 @@ namespace FakerLib
     {
         List<Type> DTOs = new List<Type>();
         Dictionary<Type, IGenerator> generators;
-        Type currentType;
+        Stack<Type> currentType = new Stack<Type>();
+        FakerConfig Config = null;
 
         public Type GetCurrentType()
         {
-            return currentType;
+            return currentType.Peek();
         }
         public T Create<T>()
         {
-            currentType = typeof(T);
-            if (currentType.IsPrimitive || generators.ContainsKey(currentType))
+            currentType.Push(typeof(T));
+            if (typeof(T).IsPrimitive || generators.ContainsKey(typeof(T)))
             {
+                T result;
                 try
                 {
-                    return (T)generators[currentType].Generate(this);
+                     result = (T)generators[typeof(T)].Generate(this);
                 }
                 catch
                 {
-                    return default;
+                    result = default;
                 }
+                currentType.Pop();
+                return result;
             }
-            else if (currentType.IsGenericType)
+            else if (currentType.Peek().IsGenericType)
             {
-                if(generators.ContainsKey(currentType.GetGenericTypeDefinition()))
+                if(generators.ContainsKey(typeof(T).GetGenericTypeDefinition()))
                 {
+                    T result;
                     try
                     {
-                        return (T)generators[currentType.GetGenericTypeDefinition()].Generate(this);
+                        result = (T)generators[typeof(T).GetGenericTypeDefinition()].Generate(this);
                     }
                     catch
                     {
-                        return default;
+                        result = default;
                     }
+                    currentType.Pop();
+                    return result;
                 }
                 else
-                 return default;
+                {
+                    currentType.Pop();
+                    return default;
+                }
+                 
             }
-            else if (DTOs.Contains(currentType))
+            else if (DTOs.Contains(typeof(T)))
             {
+                currentType.Pop();
                 return default;
             }
 
-            DTOs.Add(currentType);
+            DTOs.Add(typeof(T));
 
-            ConstructorInfo[] constructors = currentType.GetConstructors(BindingFlags.Instance | BindingFlags.Public);
+            ConstructorInfo[] constructors = typeof(T).GetConstructors(BindingFlags.Instance | BindingFlags.Public);
 
             object constructed = default;
-            if (currentType.IsValueType && constructors.Length == 0)
+            if (typeof(T).IsValueType && constructors.Length == 0)
             {
                 constructed = Activator.CreateInstance(typeof(T));
             }
@@ -80,10 +93,19 @@ namespace FakerLib
             }
             
             if(constructed != null)
+            {
                 GenerateFieldsAndProperties(constructed, ctorParams, ctor);
+                if (Config != null && Config.expressions.ContainsKey(typeof(T)))
+                {
+                    var test = (Config.expressions[typeof(T)] as Expression<Action<T, IFaker>>);
+                    test.Compile()((T)constructed, this);
+                }
+            }
+                
 
-            DTOs.Remove(currentType);
+            DTOs.Remove(typeof(T));
 
+            currentType.Pop();
             return (T)constructed;
         }
 
@@ -153,18 +175,26 @@ namespace FakerLib
             generators = GetAllGenerators();
         }
 
+        public Faker(FakerConfig config)
+        {
+            generators = GetAllGenerators();
+            Config = config;
+        }
+
         Dictionary<Type, IGenerator> GetAllGenerators()
         {
             Dictionary<Type, IGenerator> result = new Dictionary<Type, IGenerator>();
 
             Assembly asm = Assembly.GetExecutingAssembly();
             var types = asm.GetTypes().
-                        Where(t => t.GetInterfaces().
-                        Where(i => i.FullName == typeof(IGenerator).FullName).Any());
+                        Where(t => !t.IsPublic && t.GetInterfaces().
+                        Where(i => (i.FullName == typeof(IGenerator).FullName)).Any());
             foreach (Type t in types)
             {
                 IGenerator generator = (IGenerator)Activator.CreateInstance(t);
-                result.Add(generator.GetTypeGenerator(), generator);
+                Type type = generator.GetTypeGenerator();
+                if (!result.ContainsKey(type))
+                    result.Add(type, generator);
             }
 
             var plugins = PluginSupport.GetGeneratorsFromPlugins();

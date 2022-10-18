@@ -42,8 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Faker.cs" />
+    <Compile Include="FakerConfig.cs" />
     <Compile Include="Generators\BoolGenerator.cs" />
     <Compile Include="Generators\CharGenerator.cs" />
+    <Compile Include="Generators\CityGenerator.cs" />
     <Compile Include="Generators\DateTimeGenerator.cs" />
     <Compile Include="Generators\DoubleGenerator.cs" />
     <Compile Include="Generators\FloatGenerator.cs" />

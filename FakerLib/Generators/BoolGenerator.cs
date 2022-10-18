@@ -17,6 +17,5 @@ namespace FakerLib.Generators
         {
             return typeof(bool);
         }
-        public void SetFakerInterface() { }
     }
 }

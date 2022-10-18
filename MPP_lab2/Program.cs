@@ -1,4 +1,5 @@
 ﻿using FakerLib;
+using FakerLib.Generators;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -81,9 +82,16 @@ namespace MPP_lab2
                 characters = chars;
             }
         }
+
+        class Foo
+        {
+            public string City;
+        }
         static void Main(string[] args)
         {
-            Faker f2 = new Faker();
+            FakerConfig fakerConfig = new FakerConfig();
+            fakerConfig.Add<Foo, string, CityGenerator>(foo => foo.City);
+            Faker f2 = new Faker(fakerConfig);
 
             var exp1 = f2.Create<Circular1>();
             var exp3 = f2.Create<PubCtorStruct>();
@@ -94,6 +102,8 @@ namespace MPP_lab2
             var exp8 = f2.Create<DateTime>();
             var exp9 = f2.Create<string>();
             var exp10 = f2.Create<GenericClass>();
+            var exp11 = f2.Create<Foo>();
+
             Console.WriteLine("Complete");
             Console.ReadLine();
         }
